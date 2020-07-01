@@ -1,0 +1,15 @@
+.form{
+    width: 700px;
+    background: radial-gradient(black 3px, transparent 4px) 54px 55px / 109px 109px, radial-gradient(black 3px, transparent 4px) 0px 0px / 109px 109px, linear-gradient(rgb(255, 255, 255) 4px, transparent 0px) 0px 0px / 100% 6px, linear-gradient(45deg, transparent 74px, transparent 75px, rgb(164, 164, 164) 75px, rgb(164, 164, 164) 76px, transparent 77px, transparent 109px) 0px 0px / 109px 109px, linear-gradient(-45deg, transparent 75px, transparent 76px, rgb(164, 164, 164) 76px, rgb(164, 164, 164) 77px, transparent 78px, transparent 109px) 0px 0px / 109px 109px, rgb(255, 255, 255); --darkreader-inline-bgimage:radial-gradient(#000000 3px, rgba(0, 0, 0, 0) 4px), radial-gradient(#000000 3px, rgba(0, 0, 0, 0) 4px), linear-gradient(#181a1b 4px, rgba(0, 0, 0, 0) 0px), linear-gradient(45deg, rgba(0, 0, 0, 0) 74px, rgba(0, 0, 0, 0) 75px, #323537 75px, #323537 76px, rgba(0, 0, 0, 0) 77px, rgba(0, 0, 0, 0) 109px), linear-gradient(-45deg, rgba(0, 0, 0, 0) 75px, rgba(0, 0, 0, 0) 76px, #323537 76px, #323537 77px, rgba(0, 0, 0, 0) 78px, rgba(0, 0, 0, 0) 109px), initial; --darkreader-inline-bgcolor:#181a1b;
+}
+
+ ::placeholder{
+     font-size: smaller;
+ }
+input{
+    text-align: center;
+}
+
+button{
+    animation-duration: 4s;
+}
