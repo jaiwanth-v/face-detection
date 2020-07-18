@@ -9,15 +9,13 @@ class Signin extends React.Component {
       signInEmail: "",
       signInPassword: "",
       isLoading: false,
+      isUserValid: true,
     };
   }
 
-  onEmailChange = (event) => {
-    this.setState({ signInEmail: event.target.value });
-  };
-
-  onPasswordChange = (event) => {
-    this.setState({ signInPassword: event.target.value });
+  handleChange = (event) => {
+    const { value, name } = event.target;
+    this.setState({ [name]: value });
   };
 
   onSubmitSignIn = () => {
@@ -35,8 +33,12 @@ class Signin extends React.Component {
         if (user.id) {
           this.props.loadUser(user);
           this.props.onRouteChange("home");
+        } else {
+          this.setState({ isUserValid: false });
+          this.setState({ isLoading: false });
         }
-      });
+      })
+      .catch((err) => console.log("err"));
   };
 
   enterPress = (event) => {
@@ -47,7 +49,7 @@ class Signin extends React.Component {
   render() {
     const { onRouteChange } = this.props;
     return this.state.isLoading ? (
-      <div class="loading">
+      <div className="loading">
         <ReactLoading height={"7%"} width={"7%"} />
       </div>
     ) : (
@@ -73,10 +75,10 @@ class Signin extends React.Component {
                     Email
                   </label>
                   <input
-                    onChange={this.onEmailChange}
+                    onChange={this.handleChange}
                     className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                     type="email"
-                    name="email-address"
+                    name="signInEmail"
                     id="email-address"
                   />
                 </div>
@@ -86,10 +88,10 @@ class Signin extends React.Component {
                   </label>
                   <input
                     onKeyDown={(e) => this.enterPress(e)}
-                    onChange={this.onPasswordChange}
+                    onChange={this.handleChange}
                     className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                     type="password"
-                    name="password"
+                    name="signInPassword"
                     id="password"
                   />
                 </div>
@@ -101,8 +103,7 @@ class Signin extends React.Component {
                   type="submit"
                   value="Sign in"
                 />
-              </div>{" "}
-              {/*functions called inside onclick are executed even if there's no click at the time they are rendered */}
+              </div>
               <div className="lh-copy mt3">
                 <p
                   onClick={() => onRouteChange("register")}
@@ -111,6 +112,9 @@ class Signin extends React.Component {
                 >
                   Register
                 </p>
+                {!this.state.isUserValid ? (
+                  <h4>Invalid username or password</h4>
+                ) : null}
               </div>
             </div>
           </main>
